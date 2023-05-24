@@ -33,7 +33,7 @@ class AddressBookController extends Controller
 
             $contact = Contact::create([
                 'name' => $request->input('name'),
-                'phone_number' => $request->input('number_phone')
+                'phone_number' => $request->input('phone_number')
             ]);
 
             if ($contact) {
@@ -75,7 +75,8 @@ class AddressBookController extends Controller
         if ($contact) {
             return response()->json([
                 'success' => true,
-                'message' => 'Your number phone is ' . $contact->number_phone . '',
+                'message' => 'Your number phone is ' . $contact->phone_number . '',
+                'phone_number' => $contact->phone_number,
                 'data' => $contact
             ], 200);
         } else {
